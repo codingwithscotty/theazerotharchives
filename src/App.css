@@ -1,0 +1,987 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Merriweather:wght@400;700&display=swap");
+
+:root {
+  --gold: #bb842e;
+  --gold-light: #f0c967;
+  --cream: #f4e5bc;
+  --muted-text: #c9af73;
+  --border: rgba(191, 135, 44, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--cream);
+  font-family: "Merriweather", Georgia, serif;
+  background: linear-gradient(
+    180deg,
+    #0b0704,
+    #160c05 48%,
+    #080503
+  );
+}
+
+.site {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.site-header {
+  position: relative;
+  z-index: 1000;
+  background: linear-gradient(
+    180deg,
+    #241307,
+    #100905
+  );
+  border-bottom: 2px solid var(--gold);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 112px;
+  padding: 1rem;
+}
+
+.logo {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+}
+
+.brand-name {
+  color: var(--gold-light);
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.main-nav {
+  background: linear-gradient(
+    180deg,
+    #351b08,
+    #150b05
+  );
+  border-top: 1px solid rgba(224, 169, 67, 0.3);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  width: min(100%, 1500px);
+  margin: 0 auto;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1rem clamp(0.55rem, 1.15vw, 1rem);
+  color: #f2d17c;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(0.68rem, 0.9vw, 0.9rem);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-item:focus-within > .nav-link {
+  color: #fff1bd;
+  background: #452309;
+  outline: none;
+}
+
+.nav-arrow {
+  font-size: 0.55rem;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Main Dropdowns
+|--------------------------------------------------------------------------
+*/
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1100;
+  width: min(450px, calc(100vw - 2rem));
+  padding: 0.85rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(29, 15, 6, 0.98),
+    rgba(10, 6, 3, 0.99)
+  );
+  border: 2px solid var(--gold);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.85);
+  transition:
+    opacity 0.16s ease,
+    transform 0.16s ease,
+    visibility 0.16s ease;
+}
+
+.dropdown-align-right {
+  right: 0;
+  left: auto;
+}
+
+.npcs-dropdown {
+  overflow: visible;
+}
+
+.nav-item:hover > .dropdown,
+.nav-item:focus-within > .dropdown,
+.dropdown:hover,
+.dropdown:focus-within {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.18rem 0.8rem;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Lore Dropdown
+|--------------------------------------------------------------------------
+*/
+
+.lore-dropdown {
+  width: min(720px, calc(100vw - 2rem));
+  max-height: min(520px, calc(100vh - 145px));
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) rgba(20, 10, 4, 0.9);
+}
+
+.lore-dropdown .dropdown-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.lore-dropdown .dropdown-link {
+  min-height: 40px;
+  line-height: 1.35;
+}
+
+/* Chrome, Edge, and Safari scrollbar */
+
+.lore-dropdown::-webkit-scrollbar {
+  width: 10px;
+}
+
+.lore-dropdown::-webkit-scrollbar-track {
+  background: rgba(20, 10, 4, 0.9);
+  border-left: 1px solid rgba(191, 135, 44, 0.25);
+}
+
+.lore-dropdown::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--gold-light),
+    var(--gold)
+  );
+  border: 2px solid rgba(20, 10, 4, 0.9);
+  border-radius: 999px;
+}
+
+.lore-dropdown::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-light);
+}
+
+.dropdown-entry {
+  position: relative;
+  min-width: 0;
+}
+
+.dropdown-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 38px;
+  padding: 0.55rem 0.7rem;
+  color: #e9c66d;
+  font-size: 0.79rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(190, 133, 44, 0.18);
+}
+
+.dropdown-link:hover,
+.dropdown-link:focus-visible,
+.dropdown-entry:focus-within > .dropdown-link {
+  color: #fff2bd;
+  background: rgba(174, 111, 27, 0.22);
+  outline: none;
+}
+
+.submenu-arrow {
+  flex-shrink: 0;
+  color: var(--gold-light);
+  font-size: 1.3rem;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Nested NPC Dropdowns
+|--------------------------------------------------------------------------
+*/
+
+.has-nested-dropdown {
+  position: relative;
+}
+
+/*
+ * This invisible bridge covers the space between the NPC dropdown
+ * and the nested flyout. The submenu remains active while the cursor
+ * moves from Uncategorized into the Uncategorized NPCs menu.
+ */
+.has-nested-dropdown::after {
+  position: absolute;
+  top: -0.5rem;
+  left: calc(100% - 16px);
+  z-index: 1199;
+  width: 50px;
+  height: calc(100% + 1rem);
+  content: "";
+}
+
+.nested-dropdown {
+  position: absolute;
+  top: -0.85rem;
+  left: calc(100% - 12px);
+  z-index: 1200;
+  padding: 1rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(4px);
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(30, 16, 7, 0.99),
+    rgba(9, 5, 3, 0.99)
+  );
+  border: 2px solid var(--gold);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) rgba(20, 10, 4, 0.9);
+
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0.15s ease;
+}
+
+/*
+|--------------------------------------------------------------------------
+| NPC Submenu Scrollbars
+|--------------------------------------------------------------------------
+*/
+
+.nested-dropdown::-webkit-scrollbar {
+  width: 10px;
+}
+
+.nested-dropdown::-webkit-scrollbar-track {
+  background: rgba(20, 10, 4, 0.9);
+  border-left: 1px solid rgba(191, 135, 44, 0.25);
+}
+
+.nested-dropdown::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--gold-light),
+    var(--gold)
+  );
+  border: 2px solid rgba(20, 10, 4, 0.9);
+  border-radius: 999px;
+}
+
+.nested-dropdown::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-light);
+}
+
+.has-nested-dropdown:hover > .nested-dropdown,
+.has-nested-dropdown:focus-within > .nested-dropdown,
+.nested-dropdown:hover,
+.nested-dropdown:focus-within {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.nested-dropdown-heading {
+  margin-bottom: 0.8rem;
+  padding: 0.25rem 0.35rem 0.7rem;
+  color: var(--gold-light);
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(240, 194, 93, 0.45);
+}
+
+.nested-dropdown-grid {
+  display: grid;
+  gap: 0.16rem 0.8rem;
+}
+
+.nested-dropdown-link {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0.48rem 0.65rem;
+  color: #e7c36b;
+  font-size: 0.75rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(190, 133, 44, 0.15);
+}
+
+.nested-dropdown-link:hover,
+.nested-dropdown-link:focus-visible {
+  color: #fff3c1;
+  background: rgba(174, 111, 27, 0.23);
+  outline: none;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Individual NPC Flyout Sizes
+|--------------------------------------------------------------------------
+*/
+
+.aberrations-submenu {
+  width: 470px;
+  max-width: calc(100vw - 500px);
+  max-height: min(570px, calc(100vh - 145px));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.aberrations-submenu .nested-dropdown-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.battle-pets-submenu,
+.critters-submenu {
+  width: 390px;
+}
+
+.battle-pets-submenu .nested-dropdown-grid,
+.critters-submenu .nested-dropdown-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.beasts-submenu {
+  width: 650px;
+  max-height: min(650px, calc(100vh - 150px));
+  overflow-y: auto;
+}
+
+.demons-submenu {
+  width: 610px;
+  max-height: min(580px, calc(100vh - 150px));
+  overflow-y: auto;
+}
+
+.elementals-submenu {
+  width: 690px;
+  max-height: min(650px, calc(100vh - 150px));
+  overflow-y: auto;
+}
+
+.beasts-submenu .nested-dropdown-grid,
+.demons-submenu .nested-dropdown-grid,
+.elementals-submenu .nested-dropdown-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dragonkin-submenu {
+  width: 440px;
+  max-width: min(440px, calc(100vw - 485px));
+  max-height: min(610px, calc(100vh - 150px));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.dragonkin-submenu .nested-dropdown-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.giants-submenu {
+  width: 440px;
+  max-width: min(440px, calc(100vw - 485px));
+  max-height: min(610px, calc(100vh - 150px));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.giants-submenu .nested-dropdown-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.humanoids-submenu {
+  width: 650px;
+  max-height: min(650px, calc(100vh - 150px));
+  overflow-y: auto;
+}
+
+.humanoids-submenu .nested-dropdown-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mechanical-submenu {
+  width: 440px;
+  max-width: min(440px, calc(100vw - 485px));
+  max-height: min(610px, calc(100vh - 150px));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.mechanical-submenu .nested-dropdown-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/*
+|--------------------------------------------------------------------------
+| Uncategorized Submenu
+|--------------------------------------------------------------------------
+*/
+
+.uncategorized-submenu {
+  width: 460px;
+  max-width: calc(100vw - 500px);
+  max-height: min(500px, calc(100vh - 145px));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.uncategorized-submenu .nested-dropdown-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.undead-submenu {
+  width: 440px;
+  max-width: min(440px, calc(100vw - 485px));
+  max-height: min(610px, calc(100vh - 150px));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.undead-submenu .nested-dropdown-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/*
+|--------------------------------------------------------------------------
+| Homepage
+|--------------------------------------------------------------------------
+*/
+
+.hero {
+  display: grid;
+  min-height: 480px;
+  place-items: center;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.hero-content,
+.archive-card,
+.sidebar-card {
+  background: linear-gradient(
+    145deg,
+    rgba(42, 22, 8, 0.97),
+    rgba(15, 8, 4, 0.98)
+  );
+  border: 1px solid var(--border);
+  box-shadow: 0 15px 34px rgba(0, 0, 0, 0.48);
+}
+
+.hero-content {
+  width: min(900px, 100%);
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.hero h1,
+.section-heading h2,
+.archive-card h2,
+.sidebar-card h2 {
+  color: var(--gold-light);
+  font-family: "Cinzel", Georgia, serif;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 5.6vw, 5rem);
+}
+
+.hero-description {
+  line-height: 1.8;
+}
+
+.hero-button,
+.read-more {
+  display: inline-flex;
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.5rem;
+  color: #201005;
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 900;
+  text-decoration: none;
+  background: linear-gradient(
+    180deg,
+    #f2cc6f,
+    #a96c1c
+  );
+  border: 2px solid #ffe9aa;
+}
+
+.homepage-content {
+  width: min(1240px, 100%);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.section-heading {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 2fr)
+    minmax(270px, 0.8fr);
+  gap: 1.8rem;
+}
+
+.feature-column,
+.sidebar {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.archive-card,
+.sidebar-card {
+  padding: clamp(1.3rem, 3vw, 2rem);
+}
+
+.card-category {
+  color: var(--gold);
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.fact-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.fact-content span {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.trivia-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.trivia-button {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 54px;
+  color: #ead5a1;
+  background: #241307;
+  border: 1px solid rgba(186, 128, 40, 0.65);
+  cursor: pointer;
+}
+
+.trivia-button:disabled {
+  cursor: default;
+}
+
+.answer-letter {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  color: #2b1607;
+  background: var(--gold);
+}
+
+.correct-answer {
+  background: rgba(50, 100, 39, 0.45);
+}
+
+.incorrect-answer {
+  background: rgba(126, 35, 26, 0.44);
+}
+
+.unanswered {
+  opacity: 0.52;
+}
+
+.trivia-result {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.correct-result {
+  background: rgba(49, 97, 37, 0.3);
+}
+
+.incorrect-result {
+  background: rgba(125, 37, 28, 0.3);
+}
+
+.archive-category-list {
+  display: grid;
+}
+
+.archive-category-list a {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9rem 0.2rem;
+  color: #dabe7f;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184, 129, 43, 0.2);
+}
+
+.site-footer {
+  padding: 2rem 1.5rem;
+  color: #bba36d;
+  text-align: center;
+  background: #090503;
+  border-top: 2px solid var(--gold);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Podcast Sidebar
+|--------------------------------------------------------------------------
+*/
+
+.podcast-sidebar h2 {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+
+.podcast-archive {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.podcast-year,
+.podcast-month {
+  overflow: hidden;
+  background: rgba(22, 11, 5, 0.72);
+  border: 1px solid rgba(191, 135, 44, 0.45);
+}
+
+.podcast-year > summary,
+.podcast-month > summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--gold-light);
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 800;
+  user-select: none;
+}
+
+.podcast-year > summary {
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(66, 34, 10, 0.95),
+    rgba(34, 17, 7, 0.95)
+  );
+}
+
+.podcast-month > summary {
+  padding: 0.75rem 0.9rem;
+  font-size: 0.86rem;
+  background: rgba(53, 27, 8, 0.75);
+}
+
+.podcast-year > summary::-webkit-details-marker,
+.podcast-month > summary::-webkit-details-marker {
+  display: none;
+}
+
+.podcast-year > summary::after,
+.podcast-month > summary::after {
+  flex-shrink: 0;
+  color: var(--gold-light);
+  content: "＋";
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.podcast-year[open] > summary::after,
+.podcast-month[open] > summary::after {
+  content: "−";
+}
+
+.podcast-year > summary:hover,
+.podcast-year > summary:focus-visible,
+.podcast-month > summary:hover,
+.podcast-month > summary:focus-visible {
+  color: #fff2bd;
+  background: rgba(100, 54, 14, 0.75);
+  outline: none;
+}
+
+.podcast-year-content {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.75rem;
+}
+
+.podcast-episode-list {
+  margin: 0;
+  padding: 0.7rem 1rem 0.8rem 2rem;
+  color: var(--gold);
+  background: rgba(10, 5, 3, 0.7);
+  border-top: 1px solid rgba(191, 135, 44, 0.25);
+}
+
+.podcast-episode-list li {
+  padding: 0.25rem 0;
+}
+
+.podcast-episode-list a,
+.podcast-episode-list span {
+  color: #dabe7f;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.podcast-episode-list a {
+  text-decoration: none;
+}
+
+.podcast-episode-list a:hover,
+.podcast-episode-list a:focus-visible {
+  color: #fff2bd;
+  text-decoration: underline;
+  outline: none;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Responsive Layout
+|--------------------------------------------------------------------------
+*/
+
+@media (max-width: 1220px) {
+  .nav-container {
+    flex-wrap: wrap;
+  }
+
+  .aberrations-submenu,
+  .giants-submenu,
+  .uncategorized-submenu {
+    width: 430px;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .dragonkin-submenu {
+    right: calc(100% - 8px);
+    left: auto;
+    width: 420px;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .humanoids-submenu,
+  .mechanical-submenu,
+  .undead-submenu {
+    width: 620px;
+    max-width: calc(100vw - 500px);
+  }
+}
+
+@media (max-width: 1050px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-container {
+    display: grid;
+    grid-template-columns: repeat(
+      3,
+      minmax(0, 1fr)
+    );
+  }
+
+  .nav-item {
+    position: static;
+  }
+
+  .dropdown,
+  .dropdown-align-right {
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+  }
+
+  .has-nested-dropdown::after {
+    display: none;
+  }
+
+  .nested-dropdown,
+  .aberrations-submenu,
+  .battle-pets-submenu,
+  .beasts-submenu,
+  .critters-submenu,
+  .demons-submenu,
+  .dragonkin-submenu,
+  .elementals-submenu,
+  .giants-submenu,
+  .humanoids-submenu,
+  .mechanical-submenu,
+  .uncategorized-submenu,
+  .undead-submenu {
+    position: static;
+    right: auto;
+    left: auto;
+    width: 100%;
+    max-width: none;
+    max-height: 420px;
+    margin: 0.5rem 0;
+    transform: none;
+  }
+
+  .aberrations-submenu .nested-dropdown-grid,
+  .battle-pets-submenu .nested-dropdown-grid,
+  .critters-submenu .nested-dropdown-grid,
+  .dragonkin-submenu .nested-dropdown-grid,
+  .giants-submenu .nested-dropdown-grid,
+  .uncategorized-submenu .nested-dropdown-grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+
+  .beasts-submenu .nested-dropdown-grid,
+  .demons-submenu .nested-dropdown-grid,
+  .elementals-submenu .nested-dropdown-grid,
+  .humanoids-submenu .nested-dropdown-grid,
+  .mechanical-submenu .nested-dropdown-grid,
+  .undead-submenu .nested-dropdown-grid {
+    grid-template-columns: repeat(
+      3,
+      minmax(0, 1fr)
+    );
+  }
+}
+
+@media (max-width: 720px) {
+  .brand {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-container {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+
+  .dropdown-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trivia-options {
+    grid-template-columns: 1fr;
+  }
+
+  .aberrations-submenu .nested-dropdown-grid,
+  .battle-pets-submenu .nested-dropdown-grid,
+  .beasts-submenu .nested-dropdown-grid,
+  .critters-submenu .nested-dropdown-grid,
+  .demons-submenu .nested-dropdown-grid,
+  .dragonkin-submenu .nested-dropdown-grid,
+  .elementals-submenu .nested-dropdown-grid,
+  .giants-submenu .nested-dropdown-grid,
+  .humanoids-submenu .nested-dropdown-grid,
+  .mechanical-submenu .nested-dropdown-grid,
+  .uncategorized-submenu .nested-dropdown-grid,
+  .undead-submenu .nested-dropdown-grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    grid-template-columns: 1fr;
+  }
+
+  .aberrations-submenu .nested-dropdown-grid,
+  .battle-pets-submenu .nested-dropdown-grid,
+  .beasts-submenu .nested-dropdown-grid,
+  .critters-submenu .nested-dropdown-grid,
+  .demons-submenu .nested-dropdown-grid,
+  .dragonkin-submenu .nested-dropdown-grid,
+  .elementals-submenu .nested-dropdown-grid,
+  .giants-submenu .nested-dropdown-grid,
+  .humanoids-submenu .nested-dropdown-grid,
+  .mechanical-submenu .nested-dropdown-grid,
+  .uncategorized-submenu .nested-dropdown-grid,
+  .undead-submenu .nested-dropdown-grid {
+    grid-template-columns: 1fr;
+  }
+}
