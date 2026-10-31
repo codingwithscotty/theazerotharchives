@@ -792,6 +792,7 @@ body {
   color: var(--gold);
   background: rgba(10, 5, 3, 0.7);
   border-top: 1px solid rgba(191, 135, 44, 0.25);
+  list-style-type: none;
 }
 
 .podcast-episode-list li {

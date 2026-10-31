@@ -685,6 +685,7 @@ const demonLinks = [
   "Antaen",
   "Aranasi",
   "Bilescourge",
+  "Charhound",
   "Darkglare",
   "Darkhound",
   "Doomguard",
@@ -701,6 +702,7 @@ const demonLinks = [
   "Flamekin",
   "Floating Eye",
   "Gan'arg",
+  "Gloomhound",
   "Grell",
   "Imp",
   "Imp Mother",
@@ -742,6 +744,7 @@ const dragonkinLinks = [
   "Dragonman",
   "Dragonspawn",
   "Drakeadon",
+  "Drakonid",
   "Faerie Dragon",
   "Frostbrood",
   "Green Dragon",
@@ -766,24 +769,30 @@ const dragonkinLinks = [
 
 const elementalLinks = [
   "Air Elemental",
+  "Air Fury",
   "Air Revenant",
   "Alemental",
   "Arcane Elemental",
+  "Arcane Fury",
   "Azerite Elemental",
   "Bog Beast",
   "Bound Air Elemental",
   "Bound Earth Elemental",
   "Bound Fire Elemental",
   "Bound Water Elemental",
+  "Crystal Fury",
   "Djinn",
   "Earth Elemental",
+  "Earth Fury",
   "Earth Revenant",
   "Elemental Ascendant",
   "Entropic Elemental",
   "Fire Elemental",
+  "Fire Fury",
   "Fire Hawk",
   "Fire Revenant",
   "Flux Animator",
+  "Frost Fury",
   "Geode",
   "Ice Elemental",
   "Ice Revenant",
@@ -791,6 +800,7 @@ const elementalLinks = [
   "Lava Elemental",
   "Light Elemental",
   "Lightning Elemental",
+  "Magma Fury",
   "Mana Elemental",
   "Mercury Elemental",
   "Pandaren Air Elemental",
@@ -807,6 +817,7 @@ const elementalLinks = [
   "Spitter",
   "Spore",
   "Steam Elemental",
+  "Stone Fury",
   "Treant",
   "Unbound Air Elemental",
   "Unbound Earth Elemental",
@@ -814,6 +825,7 @@ const elementalLinks = [
   "Unbound Lightning Elemental",
   "Unbound Water Elemental",
   "Water Elemental",
+  "Water Fury",
   "Water Revenant",
 ];
 
@@ -822,6 +834,7 @@ const giantLinks = [
   "Anubisath",
   "Colossal",
   "Colossus",
+  "Construct",
   "Ettin",
   "Fire Giant",
   "Flesh Giant",
@@ -843,6 +856,7 @@ const giantLinks = [
 
 const humanoidLinks = [
   "Arakkoa",
+  "Beastman",
   "Blood Elf",
   "Broken",
   "Centaur",
@@ -851,10 +865,13 @@ const humanoidLinks = [
   "Darkfallen",
   "Dire Troll",
   "Draenei",
+  "Drogbar",
+  "Drust",
   "Dryad",
   "Dwarf",
   "Earthen Dwarf",
   "Ethereal",
+  "Faerie",
   "Fel Orc",
   "Felblood Elf",
   "Flamewaker",
@@ -904,6 +921,7 @@ const humanoidLinks = [
   "Quilboar",
   "Ranishu",
   "Rock Flayer",
+  "Saberon",
   "Sand Troll",
   "Sasquatch",
   "Saurok",
@@ -924,6 +942,7 @@ const humanoidLinks = [
   "Vulpera",
   "Wendigo",
   "Wildkin",
+  "Witch",
   "Wolvar",
   "Worgen",
   "Wretched",
@@ -996,6 +1015,7 @@ const uncategorizedLinks = [
 const undeadLinks = [
   "Abomination",
   "Banshee",
+  "Blood Abomination",
   "Bone Golem",
   "Bone Wraith",
   "Corpsehand",
@@ -1641,11 +1661,38 @@ function App() {
                         <ul className="podcast-episode-list">
                           <li>
                             <a
-                              href="https://www.youtube.com"
+                              href="https://youtu.be/Tzdzadk1kls"
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              Episode 1: TBA
+                              Episode 1: Arthas Menethil
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://youtu.be/nPsXJhUq1Ls"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Episode 2: Lady Jaina Proudmoore
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://youtu.be/yYmUa0QYnTU"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Episode 3: Lady Vashj
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://youtu.be/9isf2Hwv0ZI"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Episode 4: Hogger
                             </a>
                           </li>
                         </ul>
@@ -1656,7 +1703,49 @@ function App() {
 
                         <ul className="podcast-episode-list">
                           <li>
-                            <span>Coming Soon</span>
+                            <a
+                              href="https://youtu.be/yDvNmNC-7xQ"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Episode 5: Edwin VanCleef
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://youtu.be/2uyiF9GkjU8"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Episode 6: Queen Azshara
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://youtu.be/Ar2JK_x7WxY"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Episode 7: Sargeras
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://youtu.be/I5L2NUAJ41Y"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Episode 8: C'Thun
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://youtu.be/6Xv44ceKp84"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Episode 9: Hallow's End
+                            </a>
                           </li>
                         </ul>
                       </details>
